@@ -26,6 +26,7 @@ const Login = ()=> {
               else{
                  localStorage.setItem("jwt", data.token)
                  localStorage.setItem("user",JSON.stringify(data.user))
+                 localStorage.setItem("email",JSON.stringify(data.email))
 
               history.push('/')
               }
