@@ -20,16 +20,19 @@ const Login = ()=> {
               })
           }).then(res=>res.json())
           .then(data => {
+              console.log(data)
               if(data.error){
                   console.log("error")
+                  
               }
               else{
                   
                  localStorage.setItem("jwt", data.token)
                  localStorage.setItem("user",JSON.stringify(data.user))
                  localStorage.setItem("email", JSON.stringify(data.email))
-                 console.log(data);
+                 //console.log('bgf')
               history.push('/')
+              console.log(data)
               }
           }).catch(err=> {
               console.log(err)

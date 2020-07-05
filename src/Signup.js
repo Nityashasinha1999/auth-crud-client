@@ -26,6 +26,7 @@ const Login = ()=> {
               }
               else{
               history.push('/login')
+              console.log(data)
               }
           }).catch(err=> {
               console.log(err)
