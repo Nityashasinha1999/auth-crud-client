@@ -17,7 +17,7 @@ const App = () => {
             const header =  { Authorization : `Bearer ${jwt}` };
             //console.log(email);
           axios
-            .get(api,{ headers: header})
+            .get(api,{email},{ headers: header})
             .then(response => {
                 //console.log(req.body, req.query);
                 setPosts(response.data);
