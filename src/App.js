@@ -5,19 +5,20 @@ import { Link } from 'react-router-dom';
 
 const App = () => {
     const [posts, setPosts] = useState([]);
-    
-    const fetchPosts = (email) => {
+    // const [password, setPassword] = useState("")
+    const [email, setEmail] = useState([])
+    const fetchPosts = () => {
         const jwt = localStorage.jwt;
          
        // const email = localStorage.email;
        var email = localStorage.getItem('email');
         console.log(email)
           if (jwt) {
-            const api    =  `${process.env.REACT_APP_API}/posts/${email}`;
+            const api    =  `${process.env.REACT_APP_API}/posts`;
             const header =  { Authorization : `Bearer ${jwt}` };
             //console.log(email);
           axios
-            .get(api,{ headers: header, email})
+            .post(api,{ headers: header, email})
             .then(response => {
                 console.log(typeof (response.data));
                 setPosts(response.data);
@@ -65,8 +66,8 @@ const App = () => {
             <h1>MERN CRUD</h1>
             <hr />
             
-            {posts.length > 0 && posts.map((post, email) => (
-                <div className="row" key={post.email} style={{ borderBottom: '1px solid silver' }}>
+            {posts.length > 0 && posts.map((post,i) => (
+                <div className="row" key={post._id} style={{ borderBottom: '1px solid silver' }}>
                     <div className="col pt-3 pb-2">
                         <div className="row">
                             <div className="col-md-10">
