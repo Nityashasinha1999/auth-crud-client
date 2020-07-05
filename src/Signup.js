@@ -22,6 +22,7 @@ const Login = ()=> {
           .then(data => {
               if(data.error){
                   console.log("error")
+                  
               }
               else{
               history.push('/login')
@@ -29,7 +30,7 @@ const Login = ()=> {
           }).catch(err=> {
               console.log(err)
           })
-          
+          //console.log(data)
       }
     return (
          

@@ -6,27 +6,29 @@ import { Link } from 'react-router-dom';
 const App = () => {
     const [posts, setPosts] = useState([]);
     
-    const fetchPosts = (email) => {
+    const fetchPosts = () => {
         const jwt = localStorage.jwt;
+         
        // const email = localStorage.email;
-        localStorage.getItem("email");
-        console.log("email")
+       var email = localStorage.getItem("email");
+        console.log(email)
           if (jwt) {
             const api    =  `${process.env.REACT_APP_API}/posts/${email}`;
             const header =  { Authorization : `Bearer ${jwt}` };
-          
+            //console.log(email);
           axios
-            .get(api,{email},{ headers: header})
+            .get(api,{ headers: header})
             .then(response => {
-                console.log(typeof (response.data));
+                //console.log(req.body, req.query);
                 setPosts(response.data);
             })
             .catch(error => alert('Error fetching posts'));
 
           }
     };
-
-    useEffect(() => {
+     
+    // debugger();
+     useEffect(() => {
         fetchPosts();
     }, []);
 

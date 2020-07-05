@@ -24,10 +24,11 @@ const Login = ()=> {
                   console.log("error")
               }
               else{
+                  
                  localStorage.setItem("jwt", data.token)
                  localStorage.setItem("user",JSON.stringify(data.user))
-                 localStorage.setItem("email",JSON.stringify(data.email))
-
+                 localStorage.setItem("email", JSON.stringify(data.email))
+                 console.log(data);
               history.push('/')
               }
           }).catch(err=> {
