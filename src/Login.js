@@ -6,7 +6,7 @@ const Login = ()=> {
     const history = useHistory()
    // const [name, setName] = useState("")
      const [password, setPassword] = useState("")
-      const [email, setEmail] = useState("")
+      const [email, setEmail] = useState([])
       const PostData = () => {
           fetch(`${process.env.REACT_APP_API}/signin`, {
               method: "post",
@@ -29,7 +29,7 @@ const Login = ()=> {
                   
                  localStorage.setItem("jwt", data.token)
                  localStorage.setItem("user",JSON.stringify(data.user))
-                 localStorage.setItem("email", JSON.stringify(data.user.email))
+                 localStorage.setItem("email", data.user.email)
                  //console.log('bgf')
               history.push('/')
               console.log(data)

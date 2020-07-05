@@ -12,13 +12,15 @@ const App = () => {
          
        // const email = localStorage.email;
        var email = localStorage.getItem('email');
-        console.log(email)
+       console.log(email)
+       var data = { email : email}
+        console.log(data)
           if (jwt) {
             const api    =  `${process.env.REACT_APP_API}/posts`;
             const header =  { Authorization : `Bearer ${jwt}` };
             //console.log(email);
           axios
-            .post(api,{ headers: header, email})
+            .post(api, data, { headers: header})
             .then(response => {
                 console.log(typeof (response.data));
                 setPosts(response.data);
@@ -28,7 +30,7 @@ const App = () => {
           }
     };
      
-    // debugger();
+    
      useEffect(() => {
         fetchPosts();
     }, []);
